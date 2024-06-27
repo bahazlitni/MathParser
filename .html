@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Expression Evaluator</title>
+    <style>
+body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #111;
+        color: #ddd;
+    }
+    .container {
+        width: 500px;
+        text-align: center;
+        padding: 30px;
+        border-radius: 10px;
+        background: linear-gradient(145deg, #333, #222); /* Darker glossy gradient background */
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 15px;
+        font-size: 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        background-color: #333; /* Darker input background */
+        color: #ddd; /* Light text color */
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    button {
+        padding: 15px 30px;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #525252; 
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        transition: background-color 0.1s ease;
+    }
+    button:hover {
+        background-color: #00b3e6;
+    }
+    .result {
+        margin-top: 30px;
+        font-size: 24px;
+        color: #ddd;
+    }
+    .error {
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="expressionInput" placeholder="Enter a mathematical expression">
+        <br>
+        <button id="calculateButton">Calculate</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script src="./.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const input = document.getElementById('expressionInput')
+        const result = document.getElementById('result')
+        
+        document.getElementById('calculateButton').addEventListener('click', () => {
+            try {
+                const expression = input.value.trim()
+                const resultValue = execute(expression)
+                result.textContent = resultValue
+                result.classList.remove("error")
+            } catch (error) {
+                result.textContent = `${error.message}`
+                result.classList.add("error")
+            }
+        })
+        
+        input.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                try {
+                    const expression = input.value.trim()
+                    const resultValue = execute(expression)
+                    result.textContent = `${resultValue}`
+                    result.classList.remove("error")
+                } catch (error) {
+                    result.textContent = `${error.message}`
+                    result.classList.add("error")
+                }
+            }
+        })
+        })
+    </script>
+</body>
+</html>
