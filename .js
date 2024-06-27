@@ -49,7 +49,7 @@ operators = {
    "!"     : { name: "factorial operator"            , func: factF         , prio: Infinity },
    "sqrt"  : { name: "square root function"          , func: Math.sqrt     , prio: Infinity },
    "cbrt"  : { name: "cubic root function"           , func: Math.cbrt     , prio: Infinity },
-   "ln"    : { name: "natural logarithm function"    , func: x => Math.log(x, Math.E), prio: Infinity },
+   "ln"    : { name: "natural logarithm function"    , func: Math.log      , prio: Infinity },
    "log"   : { name: "logarithmic function"          , func: (x, b) => Math.log(x)/Math.log(b), prio: Infinity },
    "pow"   : { name: "power function"                , func: Math.pow  , prio: Infinity },
    "exp"   : { name: "exponential function"          , func: Math.exp  , prio: Infinity },
